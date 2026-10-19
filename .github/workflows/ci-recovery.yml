@@ -1,0 +1,16 @@
+name: CI Recovery Check
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create small file
+        run: |
+          echo "ci-recovery-check artifact" > ci-check.txt
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ci-recovery-check-artifact
+          path: ci-check.txt
